@@ -33,6 +33,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Bootstrap
 gem 'bootstrap-sass', '3.3.3'
 
+# Devise auth
+gem 'devise'
+
 group :development, :test do
   gem 'sqlite3', '1.3.10'
   gem 'byebug', '3.5.1'
