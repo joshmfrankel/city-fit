@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :searches
+
   devise_for :users
   resources :pages
 

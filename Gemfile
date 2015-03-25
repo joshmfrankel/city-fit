@@ -34,7 +34,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '3.3.3'
 
 # Devise auth
-gem 'devise'
+gem 'devise', '3.4.1'
+
+# Indeed
+gem 'indeed-ruby', '0.0.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.10'
