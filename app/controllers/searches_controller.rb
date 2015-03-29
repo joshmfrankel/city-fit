@@ -1,19 +1,30 @@
 class SearchesController < ApplicationController
   before_action :authenticate_user! # must be logged in
 
+
+  def index
+    @search = Search.all
+  end
+
   def new
-    @search = Search.new
+    @search = current_user.searches.build
   end
 
   def create
 
-    @search = Search.new(search_params)
+    @search = current_user.searches.build(search_params)
 
     if @search.save
-
+      flash[:success] = 'New search saved!'
+      redirect_to @search
     else
       render 'new'
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @search = @user.searches
   end
 
   def search
@@ -55,6 +66,6 @@ class SearchesController < ApplicationController
   private
 
     def search_params
-      params.require(:search).permit(:job1, :job2, :city)
+      params.require(:search).permit(:job1, :job2, :city, :user_id)
     end
 end
