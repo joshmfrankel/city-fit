@@ -1,2 +1,18 @@
-<h1>New Search</h1>
-<%= @result %>
+<h1>Create a Compatibility Search</h1>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for @search do |f| %>
+            <%= f.label :job1, "Job 1" %>
+            <%= f.text_field :job1, class: 'form-control' %>
+
+            <%= f.label :job2, "Job 2" %>
+            <%= f.text_field :job2, class: 'form-control' %>
+
+            <%= f.label :city, "Zipcode" %>
+            <%= f.text_field :city, class: 'form-control' %>
+
+            <%= f.submit "Create Search", :disable_with => 'Create Searching...' %>
+        <% end %>
+    </div>
+</div>

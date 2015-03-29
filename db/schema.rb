@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325012518) do
+ActiveRecord::Schema.define(version: 20150329174138) do
 
   create_table "pages", force: true do |t|
     t.string   "name"
@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 20150325012518) do
   end
 
   create_table "searches", force: true do |t|
-    t.string   "job"
+    t.string   "job1"
     t.string   "city"
     t.float    "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "job2"
   end
 
   create_table "users", force: true do |t|
