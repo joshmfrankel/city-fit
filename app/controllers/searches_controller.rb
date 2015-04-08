@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
   before_action :authenticate_user! # must be logged in
 
   def index
-    @search = current_user.searches
+    @search = current_user.searches.includes(:results)
   end
 
   def new
@@ -30,48 +30,63 @@ class SearchesController < ApplicationController
     client = Indeed::Client.new Rails.application.secrets.indeed_api
 
     # Get the search data
-    @search = current_user.searches.find(params[:id])
+    @search = current_user.searches.find_by(id: params[:id])
 
-    search1 = {
-      :q => @search.job1,
-      :l => @search.location,
-      :userip => request.env['HTTP_X_FORWARDED_FOR'],
-      :useragent => request.env['HTTP_USER_AGENT'],
-      :latlong => 1
-    }
+    if @search
 
-    search2 = {
-      :q => @search.job2,
-      :l => @search.location,
-      :userip => request.env['HTTP_X_FORWARDED_FOR'],
-      :useragent => request.env['HTTP_USER_AGENT'],
-      :latlong => 1
-    }
+      search1 = {
+        :q => @search.job1,
+        :l => @search.location,
+        :userip => request.env['HTTP_X_FORWARDED_FOR'],
+        :useragent => request.env['HTTP_USER_AGENT'],
+        :latlong => 1
+      }
 
-    puts @search.nil?
+      search2 = {
+        :q => @search.job2,
+        :l => @search.location,
+        :userip => request.env['HTTP_X_FORWARDED_FOR'],
+        :useragent => request.env['HTTP_USER_AGENT'],
+        :latlong => 1
+      }
 
-    # @result = {
-    #   "job1" => client.search(search1),
-    #   "job2" => client.search(search2)
-    # }
+      @parsed_result = {
+        :score => 12,
+        :job1Total => client.search(search1)['totalResults'],
+        :job2Total => client.search(search2)['totalResults'],
+      }
 
-    # Save results to result table with reference to the search id
-    #puts @result['job1']['totalResults']
-    # @search.results.create(
-    #   :score => 20,
-    #   :job1Total => @result['job1']['totalResults'],
-    #   :job2Total => @result['job2']['totalResults']
-    # )
-    #@search.results.find_or_initialize_by(search_id: params[:id])
-    #@search.results.update(:score => 25)
-    # @search.results.where(search_id: @search.id).first_or_create
+      # Create / Update
+      result_exists = Result.find_by(search_id: @search)
 
-    render 'result'
+      if result_exists
+        result_record.update(
+          score: @parsed_result[:score],
+          job1Total: @parsed_result[:job1Total],
+          job2Total: @parsed_result[:job2Total]
+        )
+      else
+        @search.results.create(
+          score: @parsed_result[:score],
+          job1Total: @parsed_result[:job1Total],
+          job2Total: @parsed_result[:job2Total]
+        )
+      end
+
+      render 'result'
+    else
+      redirect_to searches_path
+    end
+
   end
 
   private
 
     def search_params
       params.require(:search).permit(:job1, :job2, :location, :user_id)
+    end
+
+    def result_params
+      params.require(:result).permit(:score, :job1Total, :job2Total, :search_id)
     end
 end

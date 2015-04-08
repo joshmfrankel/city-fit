@@ -15,8 +15,8 @@ Sprint 1: Create basic search form and Database saving:
      ✔ Top 5 jobs for each search @done (15-04-07 15:43)
 
 Sprint 2: Save api results to table and display:
-  ☐ Save api response to results table and associate to a search
-  ☐ Index page with all searches from a single user
+  ✔ Save api response to results table and associate to a search @done (15-04-08 09:43)
+  ✔ Index page with all searches from a single user @done (15-04-08 09:43)
     ☐ Compare checkbox for up to three results
     ☐ Sort table by score
   ☐ Score Metric?

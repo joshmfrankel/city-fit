@@ -8,11 +8,16 @@
         <th>Request Results</th>
     </tr>
     <% @search.each do |item| %>
+
         <tr>
             <td><%= item.job1 %></td>
             <td><%= item.job2 %></td>
             <td><%= item.location %></td>
-            <td>Awaiting results...</td>
+            <td>
+                <% item.results.each do |value| %>
+                    <%= value.score %>
+                <% end %>
+            </td>
             <td><%= link_to 'Request', search_results_path(:id => item.id), method: :get %></td>
         </tr>
     <% end %>
