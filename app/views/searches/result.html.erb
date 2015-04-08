@@ -1,1 +1,7 @@
-<%= @result %>
+<% @result.each do |item| %>
+    <% item.each do |value| %>
+        <h2><%= value['query'] %></h2>
+        <strong>Total: </strong><%= value['totalResults'] %>
+        <br />
+    <% end %>
+<% end %>

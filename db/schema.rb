@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325012518) do
+ActiveRecord::Schema.define(version: 20150407162516) do
 
   create_table "pages", force: true do |t|
     t.string   "name"
@@ -20,11 +20,23 @@ ActiveRecord::Schema.define(version: 20150325012518) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "results", force: true do |t|
+    t.float    "score"
+    t.integer  "job1Total"
+    t.integer  "job2Total"
+    t.text     "job1Listing"
+    t.text     "job2Listing"
+    t.integer  "search_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "results", ["search_id"], name: "index_results_on_search_id"
+
   create_table "searches", force: true do |t|
     t.string   "job1"
     t.string   "job2"
-    t.string   "city"
-    t.float    "score"
+    t.string   "location"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

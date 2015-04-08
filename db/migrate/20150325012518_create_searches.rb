@@ -3,8 +3,7 @@ class CreateSearches < ActiveRecord::Migration
     create_table :searches do |t|
       t.string :job1
       t.string :job2
-      t.string :city
-      t.float :score
+      t.string :location
       t.references :user, index: true
 
       t.timestamps null: false

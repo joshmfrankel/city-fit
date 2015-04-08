@@ -1,0 +1,19 @@
+
+<table>
+    <tr>
+        <th>Job1</th>
+        <th>Job2</th>
+        <th>Location</th>
+        <th>Score</th>
+        <th>Request Results</th>
+    </tr>
+    <% @search.each do |item| %>
+        <tr>
+            <td><%= item.job1 %></td>
+            <td><%= item.job2 %></td>
+            <td><%= item.location %></td>
+            <td>Awaiting results...</td>
+            <td><%= link_to 'Request', search_results_path(:id => item.id), method: :get %></td>
+        </tr>
+    <% end %>
+</table>

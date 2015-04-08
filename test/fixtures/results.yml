@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: 1.5
+  job1Total: 
+  job2Total: 
+  job1Listing: MyText
+  job2Listing: MyText
+  search_id: 
+
+two:
+  score: 1.5
+  job1Total: 
+  job2Total: 
+  job1Listing: MyText
+  job2Listing: MyText
+  search_id: 

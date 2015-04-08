@@ -1,0 +1,48 @@
+
+User System:
+ ✔ Devise @done (15-03-27 09:45)
+ ☐ Create User to Search relationship
+
+   Perform a Search:
+    ☐ Input form that requires
+      ☐ Job 1
+      ☐ Job 2
+      ☐ Location (saved into score system)
+      ☐ Optional
+        ☐ Meetup interests
+        ☐ Entertainment interests
+        ☐ School (yes or no)
+        ☐ Importance (Job, food, groups, events, friends, schools)
+          ☐ scale (0.75 - 1.25)
+    ☐ Save search criteria to db
+    ☐ Queue search to prevent hitting api's too much
+    ☐ Send post data to indeed api
+    ☐ Parse response data into reable format
+    ☐ has many scores
+
+Create a Queue System for API request:
+ ☐ Store max amount of daily request for each api
+   ☐ API
+   ☐ Request Limit
+   ☐ Current Request
+ ☐ Queue request on a per user basis
+   ☐ Allow user to only perform a few request a day
+   ☐ Limit = API Limit / Total Users (watch for queueing)
+
+Create a Scoring System:
+  ☐ Location tied to score
+  ☐ Score belongs to a search
+  ☐ Number of results for a job
+  ☐ Level of experience
+  ☐ Optional factors
+    ☐ Yelp restaurants avg reviews for the location
+    ☐ Meetup.com find groups by interest
+    ☐ Facebook number of friends in the area
+    ☐ Eventbright entertainment events in the area
+    ☐ GreatSchools avg ratings
+  ☐ Metric
+    ☐ (job * jScale) + (yelp * yScale) + (meetup * mScale)
+  ☐ Save score to database
+  ☐ Optional: Determine official statstical way of determining compatibility
+    ☐ What makes people happy with the city they live in?
+    ☐ What do people value for the city they live in?

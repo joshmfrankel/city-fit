@@ -1,0 +1,69 @@
+
+Sprint 1: Create basic search form and Database saving:
+ ✔ Add New Search under user menu and only allow logged in user to use it @done (15-03-29 13:34)
+ ✔ Input form @done (15-03-29 13:35)
+   ✔ job 1 @done (15-03-29 13:35)
+   ✔ job 2 @done (15-03-29 13:35)
+   ✔ location @done (15-03-29 13:35)
+ ✔ Save form submit @done (15-03-29 15:00)
+   ✔ Search table contains everything but location @done (15-04-07 15:43)
+   ✔ Parse api results into savable format @done (15-04-07 15:43)
+     ✔ Basic api to start (indeed only) @done (15-04-07 15:43)
+   ✔ Result Table contains the location, and api results @done (15-04-07 15:43)
+     ✔ Location @done (15-04-07 15:43)
+     ✔ totalJobs @done (15-04-07 15:43)
+     ✔ Top 5 jobs for each search @done (15-04-07 15:43)
+
+Sprint 2: Save api results to table and display:
+  ☐ Save api response to results table and associate to a search
+  ☐ Index page with all searches from a single user
+    ☐ Compare checkbox for up to three results
+    ☐ Sort table by score
+  ☐ Score Metric?
+    ☐ Point Totals
+      ☐ 1 (less than 3 jobs)
+      ☐ 5 (10 jobs)
+      ☐ 10 (more than 40 jobs)
+    ☐ If job1 has greatly less than job2 then decrease points of job2 by certain percent
+      ☐ job1 = 4 jobs (2)
+      ☐ job2 = 167 jobs (10)
+      ☐ 12 points! sounds pretty good
+      ☐ D in scripty font animation
+  ☐ Show single search results
+    ☐ Raw data basically
+    ☐ Flickr api to grab an image from the city
+
+Sprint 3a: Compatibilty Comparison Page:
+  ☐ Three city comparison
+    ☐ Three columns side-by-side
+    ☐ Major score in large print
+    ☐ Details below <hr /> in soft gray
+      ☐ Details green for best
+
+Sprint 3b: Clean up Sass and add some style:
+  ☐ Choose a typeface to use
+  ☐ Choose a color scheme
+  ☐ Create a styleguide (sass)
+
+Sprint 4: Create a queue system for free api services:
+  ☐ Queue new api requests
+    ☐ Potentially just add a flag column into Search to say if the api has been parsed yet for that id
+  ☐ Check limits for api before running
+  ☐ Check user limit per day for requests before running
+  ☐ Create Cron to run requests Daily
+    ☐ Run requests in queue
+    ☐ Check new db table for maxlimit information on api's and current usage
+    ☐ Check user db table for how many request today?
+  ☐ Secondary cron to reset daily user requests and api daily requests to 0
+
+Sprint 5: Add additional API services:
+ ☐ Add fields to form (Check boxes for specific api enabling)
+   ☐ Meetup interests
+   ☐ Eventbright interests
+   ☐ GreatSchool (yes / no)
+   ☐ Facebook (yes / no)
+   ☐ Yelp interests
+ ☐ Add db migration for new field flags
+ ☐ Create API requests for active above
+ ☐ Parse responses
+ ☐ Save responses to results table as api results

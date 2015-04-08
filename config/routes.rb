@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :searches
+  get 'search_results' => 'searches#results'
 
   devise_for :users
   resources :pages
