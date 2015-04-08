@@ -48,13 +48,23 @@ class SearchesController < ApplicationController
       :latlong => 1
     }
 
-    @result = {
-      :job1 => client.search(search1),
-      :job2 => client.search(search2)
-    }
+    puts @search.nil?
+
+    # @result = {
+    #   "job1" => client.search(search1),
+    #   "job2" => client.search(search2)
+    # }
 
     # Save results to result table with reference to the search id
-    @search.results.create(:score => 20)
+    #puts @result['job1']['totalResults']
+    # @search.results.create(
+    #   :score => 20,
+    #   :job1Total => @result['job1']['totalResults'],
+    #   :job2Total => @result['job2']['totalResults']
+    # )
+    #@search.results.find_or_initialize_by(search_id: params[:id])
+    #@search.results.update(:score => 25)
+    # @search.results.where(search_id: @search.id).first_or_create
 
     render 'result'
   end
