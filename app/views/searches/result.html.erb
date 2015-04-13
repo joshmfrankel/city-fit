@@ -1,5 +1,35 @@
-<% @parsed_result.each do |item| %>
+<!-- <% @parsed_result.each do |item| %>
     <% item.each do |value| %>
         <%= value %>
     <% end %>
+<% end %> -->
+
+
+<% result1 = Array.new %>
+<% result2 = Array.new %>
+
+<h2><%= @search.location %></h2>
+<hr />
+<% @parsed_result[:raw1]['results'].each do |job| %>
+    <% result1.push "<h4><a href='#{job['url']}'>#{job['jobtitle']}</a></h4><p><strong>#{job['company']}</strong>&nbsp;<small>#{job['formattedLocation']}</small></p>".html_safe %>
 <% end %>
+<% @parsed_result[:raw2]['results'].each do |job| %>
+    <% result2.push "<h4><a href='#{job['url']}'>#{job['jobtitle']}</a></h4><p><strong>#{job['company']}</strong>&nbsp;<small>#{job['formattedLocation']}</small></p>".html_safe %>
+<% end %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3><%= @search.job1 %>&nbsp;<small>(<%= @parsed_result[:job1Total] %>)</small></h3>
+            <% result1.each do |item| %>
+                <%= item %>
+            <% end %>
+        </div>
+        <div class="col-sm-6">
+            <h3><%= @search.job2 %>&nbsp;<small>(<%= @parsed_result[:job2Total] %>)</small></h3>
+            <% result2.each do |item| %>
+                <%= item %>
+            <% end %>
+        </div>
+    </div>
+</div>

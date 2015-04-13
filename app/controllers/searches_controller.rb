@@ -53,7 +53,9 @@ class SearchesController < ApplicationController
       @parsed_result = {
         :score => 25,
         :job1Total => client.search(search1)['totalResults'],
-        :job2Total => client.search(search2)['totalResults']
+        :job2Total => client.search(search2)['totalResults'],
+        :raw1 => client.search(search1),
+        :raw2 => client.search(search2)
       }
 
       # Create / Update
@@ -74,7 +76,7 @@ class SearchesController < ApplicationController
       end
 
       flash[:success] = 'Successfully calculated a new CityFit Score'
-      redirect_to searches_path
+      render 'result'
     else
       flash[:error] = 'Id doesn\'t exist'
       redirect_to searches_path

@@ -1,4 +1,8 @@
 
+<% if @parsed_result.nil? %>
+    <%= @parsed_result.inspect %>
+<% end %>
+
 <table>
     <tr>
         <th></th>
@@ -9,7 +13,6 @@
         <th>Request Results</th>
     </tr>
     <% @search.each do |item| %>
-
         <tr>
             <td><%= check_box_tag 'accept' %></td>
             <td><%= item.job1 %></td>
