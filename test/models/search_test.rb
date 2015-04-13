@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class SearchTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  def setup
+    @user = users(:john)
+    #@search = @user.searches.build(job_title: "Lorem ipsum")
+  end
+
+
 end

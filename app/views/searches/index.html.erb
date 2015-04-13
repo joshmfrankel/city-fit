@@ -1,6 +1,7 @@
 
 <table>
     <tr>
+        <th></th>
         <th>Job1</th>
         <th>Job2</th>
         <th>Location</th>
@@ -10,6 +11,7 @@
     <% @search.each do |item| %>
 
         <tr>
+            <td><%= check_box_tag 'accept' %></td>
             <td><%= item.job1 %></td>
             <td><%= item.job2 %></td>
             <td><%= item.location %></td>

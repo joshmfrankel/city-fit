@@ -15,7 +15,7 @@ class SearchesController < ApplicationController
 
     if @search.save
       flash[:success] = 'New search saved!'
-      redirect_to @search
+      redirect_to searches_path
     else
       render 'new'
     end
@@ -51,16 +51,16 @@ class SearchesController < ApplicationController
       }
 
       @parsed_result = {
-        :score => 12,
+        :score => 25,
         :job1Total => client.search(search1)['totalResults'],
-        :job2Total => client.search(search2)['totalResults'],
+        :job2Total => client.search(search2)['totalResults']
       }
 
       # Create / Update
       result_exists = Result.find_by(search_id: @search)
 
       if result_exists
-        result_record.update(
+        result_exists.update(
           score: @parsed_result[:score],
           job1Total: @parsed_result[:job1Total],
           job2Total: @parsed_result[:job2Total]
@@ -73,11 +73,12 @@ class SearchesController < ApplicationController
         )
       end
 
-      render 'result'
+      flash[:success] = 'Successfully calculated a new CityFit Score'
+      redirect_to searches_path
     else
+      flash[:error] = 'Id doesn\'t exist'
       redirect_to searches_path
     end
-
   end
 
   private
