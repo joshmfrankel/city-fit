@@ -9,6 +9,8 @@
 <% result2 = Array.new %>
 
 <h2><%= @search.location %></h2>
+<p><%= @parsed_result[:score] %>/100</p>
+<progress value="<%= @parsed_result[:score] %>" max="100" title="<%= @parsed_result[:score] %>"></progress>
 <hr />
 <% @parsed_result[:raw1]['results'].each do |job| %>
     <% result1.push "<h4><a href='#{job['url']}'>#{job['jobtitle']}</a></h4><p><strong>#{job['company']}</strong>&nbsp;<small>#{job['formattedLocation']}</small></p>".html_safe %>
