@@ -1,13 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  job1: MyString
-  job2: MyString
-  location: 30606
-  user_id: 1
-
-two:
-  job1: MyString
-  job2: MyString
-  location: 30606
-  user_id: 1
+  user: john
+  job1: Web Developer
+  job2: Marriage and Family Therapist
+  location: "Athens, Ga"
