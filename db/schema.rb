@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322200603) do
+ActiveRecord::Schema.define(version: 20150417203657) do
+
+  create_table "indeed_results", force: true do |t|
+    t.float    "score"
+    t.integer  "job_total_1"
+    t.integer  "job_total_2"
+    t.text     "job_listing_1"
+    t.text     "job_listing_2"
+    t.text     "job_raw_1"
+    t.text     "job_raw_2"
+    t.integer  "search_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "indeed_results", ["search_id"], name: "index_indeed_results_on_search_id"
 
   create_table "pages", force: true do |t|
     t.string   "name"
@@ -19,6 +34,18 @@ ActiveRecord::Schema.define(version: 20150322200603) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "searches", force: true do |t|
+    t.string   "job1"
+    t.string   "job2"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "searches", ["user_id", "created_at"], name: "index_searches_on_user_id_and_created_at"
+  add_index "searches", ["user_id"], name: "index_searches_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -33,4 +33,33 @@ class SearchesControllerTest < ActionController::TestCase
     get :show, id: @search
     assert_response :success
   end
+
+  test "should create search" do
+
+    assert_difference 'Search.count' do
+      post :create, search: {
+        job1: @search.job1,
+        job2: @search.job2,
+        location: @search.location,
+        user_id: @search.user_id
+      }
+    end
+
+    assert_redirected_to indeed_results_path
+  end
+
+  test "should not create search when location empty" do
+    @search.location = nil
+    assert_no_difference 'Search.count' do
+      post :create, search: {
+        job1: @search.job1,
+        job2: @search.job2,
+        location: @search.location,
+        user_id: @search.user_id
+      }
+    end
+
+    assert_template 'new'
+  end
+
 end

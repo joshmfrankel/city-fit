@@ -1,3 +1,5 @@
+rails g resource IndeedResult score:float job_total_1:integer job_total_2:integer job_listing_1:text job_listing_2:text job_raw_1:text job_raw_2:text search:references:index
+
 
 Sprint 1: Create basic search form and Database saving:
  ✔ Add New Search under user menu and only allow logged in user to use it @done (15-03-29 13:34)
@@ -14,8 +16,19 @@ Sprint 1: Create basic search form and Database saving:
      ✔ totalJobs @done (15-04-07 15:43)
      ✔ Top 5 jobs for each search @done (15-04-07 15:43)
 
-Sprint 2a: Add unit testing:
-  ☐ Search controller
+Sprint 2a: Add unit testing and Refactor:
+  ✔ Search controller @done (15-04-15 18:55)
+  ✔ A user has many searches @done (15-04-17 16:37)
+  ☐ A search has one indeed_result
+  ☐ A search has one meetup_result
+    ☐ id
+    ☐ job1
+    ☐ job2
+    ☐ location
+    ☐ user_id
+  ☐ An indeed_result belongs to a search
+    ☐ api_type
+    ☐ raw data
 
 Sprint 2: Save api results to table and display:
   ✔ Save api response to results table and associate to a search @done (15-04-08 09:43)

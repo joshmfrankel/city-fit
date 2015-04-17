@@ -1,0 +1,2 @@
+class IndeedResultsController < ApplicationController
+end

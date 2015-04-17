@@ -1,8 +1,5 @@
 
-<% if @parsed_result.nil? %>
-    <%= @parsed_result.inspect %>
-<% end %>
-
+<% #link_to 'Request', search_results_path(:id => item.id), method: :get %>
 <table>
     <tr>
         <th></th>
@@ -18,12 +15,8 @@
             <td><%= item.job1 %></td>
             <td><%= item.job2 %></td>
             <td><%= item.location %></td>
-            <td>
-                <% item.results.each do |value| %>
-                    <%= value.score %>
-                <% end %>
-            </td>
-            <td><%= link_to 'Request', search_results_path(:id => item.id), method: :get %></td>
+            <td></td>
+            <td></td>
         </tr>
     <% end %>
 </table>
