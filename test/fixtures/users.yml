@@ -8,3 +8,7 @@
 
 john:
     email: test@test.com
+
+valid:
+    email: joshmfrankel@gmail.com
+    encrypted_password: <%= Devise.bcrypt(User, '23monkey') %>

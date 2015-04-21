@@ -14,74 +14,56 @@ class SearchesController < ApplicationController
     @search = current_user.searches.build(search_params)
 
     if @search.save
-      flash[:success] = 'New search saved!'
+
+      # Call API lib
+      indeed_service = IndeedService.new(Rails.application.secrets.indeed_api, request.env)
+
+      indeed_service.execute(@search.job1, @search.job2, @search.location)
+
+      result_exists = IndeedResult.find_by(search_id: @search)
+
+      if result_exists
+        flash[:success] = 'Search updated!'
+
+        result_exists.update(
+          score: indeed_service.response['score'],
+          job_total_1: indeed_service.response['job1Total'],
+          job_total_2: indeed_service.response['job2Total'],
+          job_raw_1: indeed_service.response['job1Raw'],
+          job_raw_2: indeed_service.response['job2Raw'],
+          job_listing_1: 'temp',
+          job_listing_2: 'temp2'
+        )
+      else
+        flash[:success] = 'New search created!'
+
+        IndeedResult.create(
+          score: indeed_service.response['score'],
+          job_total_1: indeed_service.response['job1Total'],
+          job_total_2: indeed_service.response['job2Total'],
+          job_raw_1: indeed_service.response['job1Raw'],
+          job_raw_2: indeed_service.response['job2Raw'],
+          job_listing_1: 'temp',
+          job_listing_2: 'temp2',
+          search_id: @search.id
+        )
+      end
+
       redirect_to indeed_results_path
     else
+      flash[:error] = 'Search had a problem saving to the database'
       render 'new'
     end
   end
 
   def show
     @search = current_user.searches.find(params[:id])
+    @indeed = IndeedResult.find(@search)
   end
 
-  # def results
-  #   # Load the api
-  #   client = Indeed::Client.new Rails.application.secrets.indeed_api
-
-  #   # Get the search data
-  #   @search = current_user.searches.find_by(id: params[:id])
-
-  #   if @search
-
-  #     search1 = {
-  #       :q => @search.job1,
-  #       :l => @search.location,
-  #       :userip => request.env['HTTP_X_FORWARDED_FOR'],
-  #       :useragent => request.env['HTTP_USER_AGENT'],
-  #       :latlong => 1
-  #     }
-
-  #     search2 = {
-  #       :q => @search.job2,
-  #       :l => @search.location,
-  #       :userip => request.env['HTTP_X_FORWARDED_FOR'],
-  #       :useragent => request.env['HTTP_USER_AGENT'],
-  #       :latlong => 1
-  #     }
-
-  #     @parsed_result = {
-  #       :score => 25,
-  #       :job1Total => client.search(search1)['totalResults'],
-  #       :job2Total => client.search(search2)['totalResults'],
-  #       :raw1 => client.search(search1),
-  #       :raw2 => client.search(search2)
-  #     }
-
-  #     # Create / Update
-  #     result_exists = Result.find_by(search_id: @search)
-
-  #     if result_exists
-  #       result_exists.update(
-  #         score: @parsed_result[:score],
-  #         job1Total: @parsed_result[:job1Total],
-  #         job2Total: @parsed_result[:job2Total]
-  #       )
-  #     else
-  #       @search.results.create(
-  #         score: @parsed_result[:score],
-  #         job1Total: @parsed_result[:job1Total],
-  #         job2Total: @parsed_result[:job2Total]
-  #       )
-  #     end
-
-  #     flash[:success] = 'Successfully calculated a new CityFit Score'
-  #     render 'result'
-  #   else
-  #     flash[:error] = 'Id doesn\'t exist'
-  #     redirect_to searches_path
-  #   end
-  # end
+  def edit
+    @search = current_user.searches.find(params[:id])
+  end
 
   private
 

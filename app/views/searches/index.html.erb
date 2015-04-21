@@ -7,7 +7,7 @@
         <th>Job2</th>
         <th>Location</th>
         <th>Score</th>
-        <th>Request Results</th>
+        <th>Edit</th>
     </tr>
     <% @search.each do |item| %>
         <tr>
@@ -16,7 +16,7 @@
             <td><%= item.job2 %></td>
             <td><%= item.location %></td>
             <td></td>
-            <td></td>
+            <td><%= link_to 'Edit', edit_search_path(item) %></td>
         </tr>
     <% end %>
 </table>
