@@ -1,8 +1,11 @@
 # Search Controller
 class SearchesController < ApplicationController
   before_action :authenticate_user! # must be logged in
+  before_action :set_search, only: [:show, :edit, :update, :destroy]
+  before_action :authorized_user, only: [:show, :edit, :update, :destroy]
 
   def index
+
     @search = current_user.searches
   end
 
@@ -17,39 +20,13 @@ class SearchesController < ApplicationController
 
       # Call API lib
       indeed_service = IndeedService.new(Rails.application.secrets.indeed_api, request.env)
-
       indeed_service.execute(@search.job1, @search.job2, @search.location)
+      @indeed = @search.create_indeed_result(indeed_service.response)
+      @response = indeed_service.response['job_raw_1']['results']
+      #render :text => @response
 
-      result_exists = IndeedResult.find_by(search_id: @search)
-
-      if result_exists
-        flash[:success] = 'Search updated!'
-
-        result_exists.update(
-          score: indeed_service.response['score'],
-          job_total_1: indeed_service.response['job1Total'],
-          job_total_2: indeed_service.response['job2Total'],
-          job_raw_1: indeed_service.response['job1Raw'],
-          job_raw_2: indeed_service.response['job2Raw'],
-          job_listing_1: 'temp',
-          job_listing_2: 'temp2'
-        )
-      else
-        flash[:success] = 'New search created!'
-
-        IndeedResult.create(
-          score: indeed_service.response['score'],
-          job_total_1: indeed_service.response['job1Total'],
-          job_total_2: indeed_service.response['job2Total'],
-          job_raw_1: indeed_service.response['job1Raw'],
-          job_raw_2: indeed_service.response['job2Raw'],
-          job_listing_1: 'temp',
-          job_listing_2: 'temp2',
-          search_id: @search.id
-        )
-      end
-
-      redirect_to indeed_results_path
+      flash[:success] = 'New search created!'
+      redirect_to @search
     else
       flash[:error] = 'Search had a problem saving to the database'
       render 'new'
@@ -57,15 +34,54 @@ class SearchesController < ApplicationController
   end
 
   def show
-    @search = current_user.searches.find(params[:id])
-    @indeed = IndeedResult.find(@search)
+    @indeed = IndeedResult.find_by(search_id: @search.id)
   end
 
   def edit
-    @search = current_user.searches.find(params[:id])
+    render 'new'
+  end
+
+  def update
+
+    indeed_service = IndeedService.new(Rails.application.secrets.indeed_api, request.env)
+    indeed_service.execute(@search.job1, @search.job2, @search.location)
+    @indeed = @search.build_indeed_result(indeed_service.response)
+
+    if @search.update_attributes(search_params)
+      if @indeed.update_attributes(indeed_service.response)
+        flash[:success] = "Search updated"
+        redirect_to @search
+      else
+        render 'edit'
+      end
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @search.destroy
+    flash[:success] = "Search deleted"
+    redirect_to searches_path
+  end
+
+  # Compare up to three searches
+  def compare
+    #https://github.com/superjustin/zip-codes-for-rails
+    @compare = Search.limit(3).find(params[:compare])
   end
 
   private
+
+    def set_search
+      @search = Search.find(params[:id])
+    end
+
+    def authorized_user
+      @search = Search.find(params[:id])
+      @user = User.find(@search.user_id)
+      redirect_to(root_url) unless current_user?(@user)
+    end
 
     def search_params
       params.require(:search).permit(:job1, :job2, :location, :user_id)

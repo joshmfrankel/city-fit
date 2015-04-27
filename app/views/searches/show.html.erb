@@ -1,1 +1,18 @@
-<%= @indeed.inspect %>
+<%= @response %>
+<h4>Score: <%= @indeed.score %></h4>
+<p>
+  <strong>Job 1:</strong>
+  <%= @search.job1 %>
+  <ul>
+    <li>total: <%= @indeed.job_total_1 %></li>
+    <li>listing: <%= @indeed.job_listing_1 %></li>
+  </ul>
+</p>
+<p>
+  <strong>Job 2:</strong>
+  <%= @search.job2 %>
+  <ul>
+    <li>total: <%= @indeed.job_total_2 %></li>
+    <li>listing: <%= @indeed.job_listing_2 %></li>
+  </ul>
+</p>

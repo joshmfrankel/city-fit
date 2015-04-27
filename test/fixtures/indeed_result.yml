@@ -2,13 +2,13 @@
 
 one:
   score: 1.5
-  job_total_1: 1
-  job_total_2: 1
+  job_total_1: 11
+  job_total_2: 12
   job_listing_1: MyText
   job_listing_2: MyText
   job_raw_1: MyText
   job_raw_2: MyText
-  search_id: 
+  search: one
 
 two:
   score: 1.5
@@ -18,4 +18,4 @@ two:
   job_listing_2: MyText
   job_raw_1: MyText
   job_raw_2: MyText
-  search_id: 
+  search: one

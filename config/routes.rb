@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   resources :searches
   #get 'search_results' => 'searches#results'
+  post 'compare' => 'searches#compare'
 
   devise_for :users
   resources :pages
 
   root 'pages#index'
+  get 'faq' => 'pages#faq'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

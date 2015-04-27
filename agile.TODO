@@ -19,47 +19,63 @@ Sprint 1: Create basic search form and Database saving:
 Sprint 2a: Add unit testing and Refactor:
   ✔ Search controller @done (15-04-15 18:55)
   ✔ A user has many searches @done (15-04-17 16:37)
-  ☐ A search has one indeed_result
-  ☐ A search has one meetup_result
-    ☐ id
-    ☐ job1
-    ☐ job2
-    ☐ location
-    ☐ user_id
-  ☐ An indeed_result belongs to a search
-    ☐ api_type
-    ☐ raw data
+  ✔ A search has one indeed_result @done (15-04-22 07:55)
+  ✔ A search has one meetup_result @done (15-04-22 07:55)
+    ✔ id @done (15-04-22 07:55)
+    ✔ job1 @done (15-04-22 07:55)
+    ✔ job2 @done (15-04-22 07:55)
+    ✔ location @done (15-04-22 07:55)
+    ✔ user_id @done (15-04-22 07:55)
+  ✔ An indeed_result belongs to a search @done (15-04-22 07:55)
+    ✔ api_type @done (15-04-22 07:55)
+    ✔ raw data @done (15-04-22 07:55)
 
 Sprint 2: Save api results to table and display:
   ✔ Save api response to results table and associate to a search @done (15-04-08 09:43)
   ✔ Index page with all searches from a single user @done (15-04-08 09:43)
-    ☐ Compare checkbox for up to three results
+    ✔ Compare checkbox for up to three results @done (15-04-22 14:30)
     ☐ Sort table by score
-  ☐ Score Metric?
-    ☐ Point Totals
-      ☐ 1 (less than 3 jobs)
-      ☐ 5 (10 jobs)
-      ☐ 10 (more than 40 jobs)
-    ☐ If job1 has greatly less than job2 then decrease points of job2 by certain percent
-      ☐ job1 = 4 jobs (2)
-      ☐ job2 = 167 jobs (10)
-      ☐ 12 points! sounds pretty good
-      ☐ D in scripty font animation
+  ✔ Score Metric? @done (15-04-22 07:55)
+    ✔ Point Totals @done (15-04-22 07:55)
+      ✔ 1 (less than 3 jobs) @done (15-04-22 07:55)
+      ✔ 5 (10 jobs) @done (15-04-22 07:55)
+      ✔ 10 (more than 40 jobs) @done (15-04-22 07:55)
+    ✔ If job1 has greatly less than job2 then decrease points of job2 by certain percent @done (15-04-22 07:55)
+      ✔ job1 = 4 jobs (2) @done (15-04-22 07:55)
+      ✔ job2 = 167 jobs (10) @done (15-04-22 07:55)
+      ✔ 12 points! sounds pretty good @done (15-04-22 07:55)
+      ✔ D in scripty font animation @done (15-04-22 07:55)
   ✔ Show single search results @done (15-04-15 18:33)
     ✔ Raw data basically @done (15-04-15 18:33)
     ☐ Flickr api to grab an image from the city
 
 Sprint 3a: Compatibilty Comparison Page:
-  ☐ Three city comparison
-    ☐ Three columns side-by-side
-    ☐ Major score in large print
-    ☐ Details below <hr /> in soft gray
+  ✔ Three city comparison @done (15-04-22 14:30)
+    ✔ Three columns side-by-side @done (15-04-22 14:30)
+    ✔ Major score in large print @done (15-04-22 14:30)
+    ✔ Details below <hr /> in soft gray @done (15-04-22 14:30)
       ☐ Details green for best
 
-Sprint 3b: Clean up Sass and add some style:
-  ☐ Choose a typeface to use
-  ☐ Choose a color scheme
-  ☐ Create a styleguide (sass)
+---- ✄ -----------------------
+
+Sprint 4: Show Search results and compat page:
+ ☐ Job Listing formatted
+ ☐ Save formatted listing
+ ☐
+
+Sprint 5: Add integration and unit testing suite:
+ ☐ Integration test for creating new search with indeed results
+ ☐ Test models
+ ☐ Test controllers
+ ☐ Remove indeed controller & views
+
+Sprint 6: Search listing cleanup and Sass:
+ ☐ Sort Table by score column
+ ☐ Prevent clicking more than 3 (js)
+ ☐ Choose typefaces to use
+ ☐ Choose Color Scheme
+ ☐ Create styleguide with sass
+
 
 Sprint 4: Create a queue system for free api services:
   ☐ Queue new api requests

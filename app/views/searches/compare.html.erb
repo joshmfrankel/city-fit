@@ -1,0 +1,20 @@
+
+<h1>CityFit Compatibility Comparison</h1>
+<div class="container">
+    <div class="row">
+        <% @compare.each do |search| %>
+            <div class="col-sm-4">
+                <h2><%= search.location %></h2>
+                <h3><%= search.indeed_result.score %><small> / 100</small></h3>
+                <meter value="<%= search.indeed_result.score %>" max="100" title="<%= search.indeed_result.score %>"></meter>
+                <hr />
+                <h4><%= search.job1 %></h4>
+                <p><strong>Total:</strong> <%= search.indeed_result.job_total_1 %></p>
+                <h4><%= search.job2 %></h4>
+                <p><strong>Total:</strong> <%= search.indeed_result.job_total_2 %></p>
+
+                <%= link_to 'show details', search_path(search.id) %>
+            </div>
+        <% end %>
+    </div>
+</div>

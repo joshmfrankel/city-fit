@@ -6,7 +6,6 @@ class SearchesControllerTest < ActionController::TestCase
   def setup
     @user   = users(:john)
     sign_in @user
-    #@search = @user.searches.build(job1: "Web Developer", job2: "Marriage and Family Therapist", location: "Athens, Ga")
     @search = searches(:one)
   end
 
@@ -29,8 +28,13 @@ class SearchesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should get edit" do
+    get :edit, id: @search.id
+    assert_response :success
+  end
+
   test "should show search" do
-    get :show, id: @search
+    get :show, id: @search.id
     assert_response :success
   end
 
@@ -40,12 +44,11 @@ class SearchesControllerTest < ActionController::TestCase
       post :create, search: {
         job1: @search.job1,
         job2: @search.job2,
-        location: @search.location,
-        user_id: @search.user_id
+        location: @search.location
       }
     end
 
-    assert_redirected_to indeed_results_path
+    assert_redirected_to search_path(assigns(:search))
   end
 
   test "should not create search when location empty" do
@@ -54,12 +57,27 @@ class SearchesControllerTest < ActionController::TestCase
       post :create, search: {
         job1: @search.job1,
         job2: @search.job2,
-        location: @search.location,
-        user_id: @search.user_id
+        location: @search.location
       }
     end
 
     assert_template 'new'
+  end
+
+  test "should update search" do
+    patch :update, id: @search, search: {
+      job1: @search.job1,
+      job2: @search.job2,
+      location: @search.location
+    }
+    assert_redirected_to search_path(assigns(:search))
+  end
+
+  test "should destroy search" do
+    assert_difference 'Search.count', -1 do
+      delete :destroy, id: @search
+    end
+    assert_redirected_to searches_path
   end
 
 end
