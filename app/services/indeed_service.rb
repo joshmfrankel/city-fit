@@ -17,8 +17,8 @@ class IndeedService
       'job_total_2'   => @client.search(search2)['totalResults'],
       'job_raw_1'     => @client.search(search1),
       'job_raw_2'     => @client.search(search2),
-      'job_listing_1' => 'temp',
-      'job_listing_2' => 'temp'
+      'job_listing_1' => format_listing(@client.search(search1)['results']),
+      'job_listing_2' => format_listing(@client.search(search2)['results'])
     }
   end
 
@@ -35,7 +35,13 @@ class IndeedService
     end
 
     def format_listing(raw)
-
+      #puts '###'
+      output = ""
+      raw.each do |job|
+        #puts job['jobtitle']
+        output = output + '<div class="job-listing-row"><h3><a href="' + job['url'] + '">' + job['jobtitle'] + '</a></h3><p>' + job['formattedLocationFull'] + '</p></div>'
+      end
+      output
     end
 
     # Weighted formula to allow for job importance slider

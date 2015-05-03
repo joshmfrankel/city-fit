@@ -54,14 +54,13 @@ Sprint 3a: Compatibilty Comparison Page:
     ✔ Three columns side-by-side @done (15-04-22 14:30)
     ✔ Major score in large print @done (15-04-22 14:30)
     ✔ Details below <hr /> in soft gray @done (15-04-22 14:30)
-      ☐ Details green for best
 
----- ✄ -----------------------
 
 Sprint 4: Show Search results and compat page:
- ☐ Job Listing formatted
- ☐ Save formatted listing
- ☐
+ ✔ Job Listing formatted @done (15-05-03 09:40)
+ ✔ Save formatted listing @done (15-05-03 09:40)
+
+---- ✄ -----------------------
 
 Sprint 5: Add integration and unit testing suite:
  ☐ Integration test for creating new search with indeed results

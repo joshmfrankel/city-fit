@@ -5,7 +5,7 @@
   <%= @search.job1 %>
   <ul>
     <li>total: <%= @indeed.job_total_1 %></li>
-    <li>listing: <%= @indeed.job_listing_1 %></li>
+    <li>listing: <%= @indeed.job_listing_1.html_safe %></li>
   </ul>
 </p>
 <p>
@@ -13,6 +13,6 @@
   <%= @search.job2 %>
   <ul>
     <li>total: <%= @indeed.job_total_2 %></li>
-    <li>listing: <%= @indeed.job_listing_2 %></li>
+    <li>listing: <%= @indeed.job_listing_2.html_safe %></li>
   </ul>
 </p>
