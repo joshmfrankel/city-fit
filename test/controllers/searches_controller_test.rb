@@ -44,6 +44,7 @@ class SearchesControllerTest < ActionController::TestCase
       post :create, search: {
         job1: @search.job1,
         job2: @search.job2,
+        job_scale: @search.job_scale,
         location: @search.location
       }
     end

@@ -4,4 +4,5 @@ one:
   user: john
   job1: Web Developer
   job2: Marriage and Family Therapist
+  job_scale: 30
   location: "Athens, Ga"

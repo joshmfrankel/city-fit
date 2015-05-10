@@ -7,4 +7,5 @@ class Search < ActiveRecord::Base
   validates :job2, presence: true
   validates :location, presence: true
   validates :user_id, presence: true
+  validates :job_scale, presence: true
 end

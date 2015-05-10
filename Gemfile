@@ -46,8 +46,11 @@ group :development, :test do
 end
 
 group :test do
+  #gem 'minitest-rails'
+  #gem "minitest-rails-capybara"
   gem 'minitest-reporters', '1.0.10'
   gem 'mini_backtrace',     '0.1.3'
+  #gem 'capybara', '~> 2.0'
   gem 'libnotify',          '0.9.1'  # Notifications
   gem 'guard',              '2.11.1' # Guard to use libnotify properly
   gem 'guard-minitest',     '2.4.3'

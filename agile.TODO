@@ -34,7 +34,6 @@ Sprint 2: Save api results to table and display:
   ✔ Save api response to results table and associate to a search @done (15-04-08 09:43)
   ✔ Index page with all searches from a single user @done (15-04-08 09:43)
     ✔ Compare checkbox for up to three results @done (15-04-22 14:30)
-    ☐ Sort table by score
   ✔ Score Metric? @done (15-04-22 07:55)
     ✔ Point Totals @done (15-04-22 07:55)
       ✔ 1 (less than 3 jobs) @done (15-04-22 07:55)
@@ -47,7 +46,6 @@ Sprint 2: Save api results to table and display:
       ✔ D in scripty font animation @done (15-04-22 07:55)
   ✔ Show single search results @done (15-04-15 18:33)
     ✔ Raw data basically @done (15-04-15 18:33)
-    ☐ Flickr api to grab an image from the city
 
 Sprint 3a: Compatibilty Comparison Page:
   ✔ Three city comparison @done (15-04-22 14:30)
@@ -63,20 +61,46 @@ Sprint 4: Show Search results and compat page:
 ---- ✄ -----------------------
 
 Sprint 5: Add integration and unit testing suite:
- ☐ Integration test for creating new search with indeed results
- ☐ Test models
+ ☐ Integration tests
+   ☐ Indeed Service Test
+     ☐ Should not have valid format or should have error code
+   ☐ Create new search with indeed results
+   ☐ Create New search with other api results (boilerplate ^^^)
  ☐ Test controllers
- ☐ Remove indeed controller & views
+   ☐ Pages
+ ✔ Test models @done (15-05-03 11:16)
+   ✔ Search @done (15-05-04 13:33)
+   ✔ Indeed Result @done (15-05-04 13:33)
+ ✔ Remove indeed controller & views @done (15-05-04 13:31)
 
-Sprint 6: Search listing cleanup and Sass:
+Sprint 6: Add Another API:
+  ☐ Add fields to form (Check boxes for specific api enabling)
+    ☐ Meetup interests
+    ☐ Eventbright interests
+    ☐ GreatSchool (yes / no)
+    ☐ Facebook (yes / no)
+    ☐ Yelp interests
+  ☐ Create new association and migration
+    ☐ rails g resource [api-name] fields
+    ☐ rake db:migrate
+  ☐ Add api key to secrets
+  ☐ Parse and Format response data
+  ☐ Save data on search
+  ☐ Calculate a score for the city
+  ☐ Show score in column on index page
+    ☐ Job1 | Job2 | Overall score | Indeed Score | Other API Score
+
+Sprint 7: Search listing cleanup and Sass:
  ☐ Sort Table by score column
+ ☐ Flickr api to grab an image from the city
  ☐ Prevent clicking more than 3 (js)
  ☐ Choose typefaces to use
  ☐ Choose Color Scheme
  ☐ Create styleguide with sass
 
-
-Sprint 4: Create a queue system for free api services:
+Sprint 8: Create a queue system for free api services:
+  ☐ Create table to store maximum limits per service name
+    ☐ service_name, limit, current
   ☐ Queue new api requests
     ☐ Potentially just add a flag column into Search to say if the api has been parsed yet for that id
   ☐ Check limits for api before running
@@ -87,14 +111,3 @@ Sprint 4: Create a queue system for free api services:
     ☐ Check user db table for how many request today?
   ☐ Secondary cron to reset daily user requests and api daily requests to 0
 
-Sprint 5: Add additional API services:
- ☐ Add fields to form (Check boxes for specific api enabling)
-   ☐ Meetup interests
-   ☐ Eventbright interests
-   ☐ GreatSchool (yes / no)
-   ☐ Facebook (yes / no)
-   ☐ Yelp interests
- ☐ Add db migration for new field flags
- ☐ Create API requests for active above
- ☐ Parse responses
- ☐ Save responses to results table as api results

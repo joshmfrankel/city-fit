@@ -13,6 +13,11 @@ class IndeedServiceReturnsApiResultsTest < ActionDispatch::IntegrationTest
     assert_not Rails.application.secrets.indeed_api.nil?
   end
 
+  test 'invalid api secret should not be valid' do
+    indeed_service = IndeedService.new('wrong', @request)
+    assert indeed_service.response.nil?
+  end
+
   test 'should format valid request' do
 
     indeed_service = IndeedService.new(Rails.application.secrets.indeed_api, @request)

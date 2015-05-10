@@ -27,4 +27,19 @@ class SearchTest < ActiveSupport::TestCase
     assert_not @search.valid?
   end
 
+  test "job_scale should be present" do
+    @search.job_scale = nil
+    assert_not @search.valid?
+  end
+
+  test "job_scale should not be less than 0" do
+    @search.job_scale = -1
+    assert_not @search.valid?
+  end
+
+  test "job_scale should not be greater than 100" do
+    @search.job_scale = 100
+    assert_not @search.valid?
+  end
+
 end
