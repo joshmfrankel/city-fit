@@ -28,6 +28,7 @@ class IndeedService
     job_score_1 = calculate_score(job_total_1)
     job_score_2 = calculate_score(job_total_2)
     weight = calculate_weight(job_scale)
+    puts weight
 
     total = ((job_score_1 / 100.0) * weight[0]) + ((job_score_2 / 100.0) * weight[1])
   end

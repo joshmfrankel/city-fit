@@ -22,7 +22,7 @@ class SearchesController < ApplicationController
       indeed_service = IndeedService.new(Rails.application.secrets.indeed_api, request.env)
       indeed_service.execute(@search.job1, @search.job2, @search.job_scale, @search.location)
       @indeed = @search.create_indeed_result(indeed_service.response)
-      @response = indeed_service.response['job_raw_1']['results']
+      #@response = indeed_service.response['job_raw_1']['results']
       #render :text => @response
 
       flash[:success] = 'New search created!'
@@ -84,6 +84,6 @@ class SearchesController < ApplicationController
     end
 
     def search_params
-      params.require(:search).permit(:job1, :job2, :location, :user_id)
+      params.require(:search).permit(:job1, :job2, :location, :job_scale, :user_id)
     end
 end
