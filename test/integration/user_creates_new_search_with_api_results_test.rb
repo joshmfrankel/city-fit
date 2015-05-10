@@ -14,7 +14,7 @@ class UserCreatesNewSearchWithApiResultsTest < ActionDispatch::IntegrationTest
 
     # Check for multiple table changing
     assert_difference ['Search.count', 'IndeedResult.count'] do
-      post '/searches', 'search[job1]' => 'Web Developer', 'search[job2]' => 'Clinical Therapist', 'search[location]' => '30606'
+      post searches_path, 'search[job1]' => 'Web Developer', 'search[job2]' => 'Clinical Therapist', 'search[location]' => '30606', 'search[job_scale]' => '30'
     end
 
   end

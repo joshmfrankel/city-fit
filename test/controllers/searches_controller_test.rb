@@ -58,6 +58,7 @@ class SearchesControllerTest < ActionController::TestCase
       post :create, search: {
         job1: @search.job1,
         job2: @search.job2,
+        job_scale: @search.job_scale,
         location: @search.location
       }
     end
@@ -69,6 +70,7 @@ class SearchesControllerTest < ActionController::TestCase
     patch :update, id: @search, search: {
       job1: @search.job1,
       job2: @search.job2,
+      job_scale: @search.job_scale,
       location: @search.location
     }
     assert_redirected_to search_path(assigns(:search))

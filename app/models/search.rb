@@ -7,5 +7,5 @@ class Search < ActiveRecord::Base
   validates :job2, presence: true
   validates :location, presence: true
   validates :user_id, presence: true
-  validates :job_scale, presence: true
+  validates :job_scale, presence: true, :numericality => { :greater_than_or_equal_to => -50, :less_than_or_equal_to => 50 }
 end

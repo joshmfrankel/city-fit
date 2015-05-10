@@ -20,7 +20,7 @@ class SearchesController < ApplicationController
 
       # Call API lib
       indeed_service = IndeedService.new(Rails.application.secrets.indeed_api, request.env)
-      indeed_service.execute(@search.job1, @search.job2, @search.location)
+      indeed_service.execute(@search.job1, @search.job2, @search.job_scale, @search.location)
       @indeed = @search.create_indeed_result(indeed_service.response)
       @response = indeed_service.response['job_raw_1']['results']
       #render :text => @response
