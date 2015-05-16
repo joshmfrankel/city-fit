@@ -32,11 +32,6 @@ class SearchTest < ActiveSupport::TestCase
     assert_not @search.valid?
   end
 
-  test "job_scale should be valid" do
-    @search.job_scale = -20
-    assert @search.valid?
-  end
-
   test "job_scale should not be less than 10" do
     @search.job_scale = 9
     assert_not @search.valid?

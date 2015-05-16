@@ -61,13 +61,13 @@ Sprint 4: Show Search results and compat page:
 ---- ✄ -----------------------
 
 Sprint 5: Add integration and unit testing suite:
- ☐ Integration tests
-   ☐ Indeed Service Test
-     ☐ Should not have valid format or should have error code
-   ☐ Create new search with indeed results
-   ☐ Create New search with other api results (boilerplate ^^^)
- ☐ Test controllers
-   ☐ Pages
+ ✔ Integration tests @done (15-05-12 21:54)
+   ✔ Indeed Service Test @done (15-05-12 21:54)
+     ✔ Should not have valid format or should have error code @done (15-05-12 21:54)
+   ✔ Create new search with indeed results @done (15-05-12 21:54)
+   ✔ Create New search with other api results (boilerplate ^^^) @done (15-05-12 21:54)
+ ✔ Test controllers @done (15-05-12 21:54)
+   ✔ Pages @done (15-05-12 21:54)
  ✔ Test models @done (15-05-03 11:16)
    ✔ Search @done (15-05-04 13:33)
    ✔ Indeed Result @done (15-05-04 13:33)
@@ -79,6 +79,7 @@ Sprint 6: Add Another API:
     ☐ Eventbright interests
     ☐ GreatSchool (yes / no)
     ☐ Facebook (yes / no)
+    ☐ Trulia Stats (http://developer.trulia.com/docs/read/TruliaStats/getNeighborhoodStats)
     ☐ Yelp interests
   ☐ Create new association and migration
     ☐ rails g resource [api-name] fields

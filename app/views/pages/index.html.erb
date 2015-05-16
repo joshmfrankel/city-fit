@@ -1,1 +1,59 @@
-<h2>Hi</h2>
+<div class="jumbotron">
+  <h1>CityFit. Find your perfect match.</h1>
+  <%= link_to 'Register', new_user_registration_path, :class => 'btn btn-primary btn-lg', :role => 'button' %>
+  <%= link_to 'Login', new_user_session_path, :class => 'btn btn-primary btn-lg', :role => 'button' %>
+</div>
+
+<div class="container-wrapper medium-blue">
+    <div class="container">
+        <div class="page-header">
+            <h2>Powered by the Best</h2>
+            <p>CityFit is powered by leaders in the industry.</p>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+              <%= image_tag 'APIs/indeed.png' %>
+              <div class="caption">
+                <h3>Jobs from Indeed</h3>
+                <p>We utilize data from Indeed.com to determine locations that provide lots of job opportunities.</p>
+                <p><%= link_to 'Learn more', faq_path, :class => 'btn btn-default', :role => 'button' %></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+              <%= image_tag 'APIs/meetup.png' %>
+              <div class="caption">
+                <h3>Social life from Meetup</h3>
+                <p>By looking for local meetups in your area we can show you cities that have a robust social life.</p>
+                <p><%= link_to 'Learn more', faq_path, :class => 'btn btn-default', :role => 'button' %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+              <%= image_tag 'APIs/trulia.jpg' %>
+              <div class="caption">
+                <h3>Real Estate &amp; Neighborhood from Trulia</h3>
+                <p>By looking for local meetups in your area we can show you cities that have a robust social life.</p>
+                <p><%= link_to 'Learn more', faq_path, :class => 'btn btn-default', :role => 'button' %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+              <%= image_tag 'APIs/greatschools.png' %>
+              <div class="caption">
+                <h3>Education from GreatSchools</h3>
+                <p>By looking for local meetups in your area we can show you cities that have a robust social life.</p>
+                <p><%= link_to 'Learn more', faq_path, :class => 'btn btn-default', :role => 'button' %></p>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- End Row -->
+    </div>
+</div>

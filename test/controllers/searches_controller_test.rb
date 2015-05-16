@@ -49,7 +49,8 @@ class SearchesControllerTest < ActionController::TestCase
       }
     end
 
-    assert_redirected_to search_path(assigns(:search))
+    #assert_redirected_to search_path(assigns(:search))
+    assert_redirected_to searches_path
   end
 
   test "should not create search when location empty" do

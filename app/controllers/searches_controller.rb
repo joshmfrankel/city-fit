@@ -26,7 +26,7 @@ class SearchesController < ApplicationController
       #render :text => @response
 
       flash[:success] = 'New search created!'
-      redirect_to @search
+      redirect_to searches_path
     else
       flash[:error] = 'Search had a problem saving to the database'
       render 'new'
@@ -44,7 +44,7 @@ class SearchesController < ApplicationController
   def update
 
     indeed_service = IndeedService.new(Rails.application.secrets.indeed_api, request.env)
-    indeed_service.execute(@search.job1, @search.job2, @search.location)
+    indeed_service.execute(@search.job1, @search.job2, @search.job_scale, @search.location)
     @indeed = @search.build_indeed_result(indeed_service.response)
 
     if @search.update_attributes(search_params)
