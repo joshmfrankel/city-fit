@@ -15,3 +15,9 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+    $('#enable_meetup').on('click', function() {
+        $('.meetup-section').slideToggle();
+    });
+});

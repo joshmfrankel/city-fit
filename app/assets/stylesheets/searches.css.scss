@@ -1,3 +1,17 @@
 // Place all the styles related to the Searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.meetup-section {
+    display: none;
+}
+.job-scale {
+    .job-scale-left {
+        float:left;
+    }
+    .job-scale-right {
+        float:right;
+    }
+}
+input {
+    margin-bottom: 20px;
+}

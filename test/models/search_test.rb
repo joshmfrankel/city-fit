@@ -42,4 +42,5 @@ class SearchTest < ActiveSupport::TestCase
     assert_not @search.valid?
   end
 
+
 end

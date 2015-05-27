@@ -12,11 +12,24 @@
             <%= f.label :job2, "Job 2" %>
             <%= f.text_field :job2, class: 'form-control' %>
 
-            <%= f.label :job_scale, "Job Scale" %>
-            <%= f.range_field :job_scale, :in => 10..90, :step => '10' %>
+            <%= f.label :job_scale, "Job Importance Scale" %>
+            <div class="job-scale">
+                <span class="job-scale-left">Job 1</span>
+                <span class="job-scale-right">Job 2</span>
+                <%= f.range_field :job_scale, :in => 10..90, :step => '10' %>
+            </div>
 
             <%= f.label :location, "Location" %>
             <%= f.text_field :location, class: 'form-control' %>
+
+            <%= f.label :enable_meetup, "Toggle Meetup Interests" %>
+            <%= check_box_tag(:enable_meetup) %>
+
+            <div class="meetup-section">
+                <%= f.label :meetup_interests, "Meetup" %>
+                <%= f.text_field :meetup_interests, class: 'form-control' %>
+            </div>
+
 
             <br />
             <%= f.submit "Create Search", :disable_with => 'Create Searching...', class: 'btn btn-primary' %>

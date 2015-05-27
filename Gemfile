@@ -39,6 +39,9 @@ gem 'devise', '3.4.1'
 # Indeed
 gem 'indeed-ruby', '0.0.1'
 
+# Httpparty
+gem 'httparty', '0.13.5'
+
 group :development, :test do
   gem 'sqlite3', '1.3.10'
   gem 'byebug', '3.5.1'

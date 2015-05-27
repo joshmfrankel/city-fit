@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505203600) do
+ActiveRecord::Schema.define(version: 20150516183258) do
 
   create_table "indeed_results", force: true do |t|
     t.float    "score"
@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(version: 20150505203600) do
     t.string   "job2"
     t.string   "location"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "job_scale"
+    t.text     "meetup_interests"
   end
 
   add_index "searches", ["user_id", "created_at"], name: "index_searches_on_user_id_and_created_at"
