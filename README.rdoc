@@ -1,28 +1,72 @@
-== README
+# CityFit
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A common problem with today's professional couples are two different careers
+that contain conflicting requirements for living. CityFit aims to solve this
+two body problem by providing a metric for comparing cities compatibility score
+for two different careers.
 
-Things you may want to cover:
+## Feature Listing
 
-* Ruby version
+### Basic Site Setup
+[x] Bootstrap-sass
+[x] Guard, Minitest, Spring for unit testing
+[x] Secrets.yml utilized for api keys
 
-* System dependencies
+### User Management (complete)
+[x] User Authentication (Devise gem)
+[x] User Authorization (Devise gem)
+[x] User Account Management (Devise gem)
 
-* Configuration
+### Searches
+[x] Saved search into relational database
+[x] Show search results in table format
+[x] Compare page to compare up to three cities at once
+[ ] Sortable index page
 
-* Database creation
+### Jobs (complete)
+[x] Retrieve Indeed.com api results
+[x] Save api results into joined search table
+[x] Design and utilize a metric scoring system for ease of finding a job
+[x] Build a job importance scale to weight one job more than another
+[x] Api request class has appropriate unit tests
 
-* Database initialization
+### Pages, Styles, and Fonts
+[ ] Decide on font pairing
+[ ] Decide on color scheme
+[ ] FAQ page
+[ ] Contact page (sendgrid)
 
-* How to run the test suite
+## Upcoming Features
 
-* Services (job queues, cache servers, search engines, etc.)
+### Meetup
+[x] Retrieve Meetup.com Api results
+[x] Save results into joined search table
+[x] Design and utilize a metric scoring system for meetup groups with similiar interests
+[x] Api request class has appropriate unit tests
 
-* Deployment instructions
+## Proposed Features
 
-* ...
+### Service Layer
+[ ] Group all API requests behind an interface or common class
 
+### Queue System
+[ ] Implement a queue system to prevent API rate limiting
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Facebook
+[ ] Retrieve Facebook.com Api results
+[ ] Save results into joined search table
+[ ] Design and utilize a metric scoring system nearby friends
+[ ] Api request class has appropriate unit tests
+[ ] Integrate facebook authentication
+
+### Zillow
+[ ] Retrieve Zillow.com Api results
+[ ] Save results into joined search table
+[ ] Design and utilize a metric scoring system for rental price
+[ ] Api request class has appropriate unit tests
+
+### Greatschools
+[ ] Retrieve Greatschools Api results
+[ ] Save results into joined search table
+[ ] Design and utilize a metric scoring system school ratings
+[ ] Api request class has appropriate unit tests
