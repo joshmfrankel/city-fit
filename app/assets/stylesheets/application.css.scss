@@ -4,13 +4,15 @@
 @import "pages";
 @import "searches";
 
-.container-wrapper {
-    width:100%;
-    position: absolute;
-    left:0;
-}
 .medium-blue {
     background-color: #BCD2EE;
+}
+.green {
+    background: green;
+}
+.meetup-bg {
+    background: #ccc url(/assets/Homepage/meetup.jpg) no-repeat center -80px;
+    height: 500px;
 }
 * {
     color:#463730;
@@ -18,6 +20,6 @@
 .navbar {
 
 }
-.thumbnail {
-
+.float-right {
+    float:right;
 }

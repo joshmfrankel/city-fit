@@ -2,7 +2,7 @@
 class SearchesController < ApplicationController
   before_action :authenticate_user! # must be logged in
   before_action :set_search, only: [:show, :edit, :update, :destroy]
-  before_action :authorized_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorized_user, only: [:show, :edit, :update, :destroy] # must own page
 
   def index
 
@@ -26,6 +26,7 @@ class SearchesController < ApplicationController
       # Meetup
       meetup_service = MeetupService.new(@search.meetup_interests, @search.location)
       meetup_service.execute
+      #@search # Create many results
 
       render :text => meetup_service.response
 

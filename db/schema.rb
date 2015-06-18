@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516183258) do
+ActiveRecord::Schema.define(version: 20150612195427) do
 
   create_table "indeed_results", force: true do |t|
     t.float    "score"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 20150516183258) do
   end
 
   add_index "indeed_results", ["search_id"], name: "index_indeed_results_on_search_id"
+
+  create_table "meetups", force: true do |t|
+    t.text     "name"
+    t.float    "score"
+    t.integer  "total_members"
+    t.integer  "search_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "total_groups"
+  end
+
+  add_index "meetups", ["search_id"], name: "index_meetups_on_search_id"
 
   create_table "pages", force: true do |t|
     t.string   "name"

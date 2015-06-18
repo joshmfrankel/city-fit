@@ -53,16 +53,16 @@ class IndeedService
   # 120+ = 100
   def calculate_score(job_total)
     case job_total
-      when 0 then 0
-      when 1..4 then 5
-      when 5..9 then 10
-      when 10..19 then 20
-      when 20..39 then 30
-      when 40..59 then 40
-      when 60..79 then 50
-      when 80..99 then 60
-      when 100..119 then 80
-      else 100
+    when 0 then 0
+    when 1..4 then 5
+    when 5..9 then 10
+    when 10..19 then 20
+    when 20..39 then 30
+    when 40..59 then 40
+    when 60..79 then 50
+    when 80..99 then 60
+    when 100..119 then 80
+    else 100
     end
   end
 

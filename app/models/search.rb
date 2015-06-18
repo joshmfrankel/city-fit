@@ -2,6 +2,7 @@ class Search < ActiveRecord::Base
 
   belongs_to :user
   has_one :indeed_result, dependent: :destroy
+  has_many :meetup, dependent: :destroy
 
   validates :job1, presence: true
   validates :job2, presence: true
