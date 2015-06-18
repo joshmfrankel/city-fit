@@ -39,16 +39,10 @@ for two different careers.
 ## Upcoming Features
 
 ### Meetup
-[ ] Retrieve Meetup.com Api results
-[ ] Save results into joined search table
-[ ] Design and utilize a metric scoring system for meetup groups with similiar interests
-[ ] Api request class has appropriate unit tests
-
-### Greatschools
-[ ] Retrieve Greatschools Api results
-[ ] Save results into joined search table
-[ ] Design and utilize a metric scoring system school ratings
-[ ] Api request class has appropriate unit tests
+[x] Retrieve Meetup.com Api results
+[x] Save results into joined search table
+[x] Design and utilize a metric scoring system for meetup groups with similiar interests
+[x] Api request class has appropriate unit tests
 
 ## Proposed Features
 
@@ -69,4 +63,10 @@ for two different careers.
 [ ] Retrieve Zillow.com Api results
 [ ] Save results into joined search table
 [ ] Design and utilize a metric scoring system for rental price
+[ ] Api request class has appropriate unit tests
+
+### Greatschools
+[ ] Retrieve Greatschools Api results
+[ ] Save results into joined search table
+[ ] Design and utilize a metric scoring system school ratings
 [ ] Api request class has appropriate unit tests
