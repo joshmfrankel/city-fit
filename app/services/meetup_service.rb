@@ -53,8 +53,12 @@ class MeetupService
       'total_members' => total_members,
       'total_meetups' => total_meetups,
       'avg_relevancy' => avg_relevancy,
-      'score'         => ((calculate_total_member_score(total_members) / 100.0) * 50) + ((calculate_total_meetup_score(total_meetups) / 100) * 50)
+      'score'         => calculate_score(total_members, total_meetups)
     ]
+  end
+
+  def calculate_score(total_members, total_meetups)
+    ((calculate_total_member_score(total_members) / 100.0) * 50) + ((calculate_total_meetup_score(total_meetups) / 100.0) * 50)
   end
 
   # Calculate a base 10 score between 0 and 100
