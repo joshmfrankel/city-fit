@@ -10,11 +10,11 @@ class UserCreatesNewSearchWithApiResultsTest < ActionDispatch::IntegrationTest
 
     # login
     post '/users/sign_in', 'user[email]' => 'joshmfrankel@gmail.com', 'user[password]' => '23monkey'
-    assert_redirected_to root_path
+    assert_redirected_to searches_path
 
     # Check for multiple table changing
     assert_difference ['Search.count', 'IndeedResult.count'] do
-      post searches_path, 'search[job1]' => 'Web Developer', 'search[job2]' => 'Clinical Therapist', 'search[location]' => '30606', 'search[job_scale]' => '30'
+      post searches_path, 'search[job1]' => 'Web Developer', 'search[job2]' => 'Clinical Therapist', 'search[location]' => '30606', 'search[job_scale]' => '30', 'search[meetup_interests]' => 'Hiking'
     end
 
   end

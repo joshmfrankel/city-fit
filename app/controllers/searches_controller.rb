@@ -2,7 +2,7 @@
 class SearchesController < ApplicationController
   before_action :authenticate_user! # must be logged in
   before_action :set_search, only: [:show, :edit, :update, :destroy]
-  before_action :authorized_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorized_user, only: [:show, :edit, :update, :destroy] # must own page
 
   def index
 
@@ -22,11 +22,16 @@ class SearchesController < ApplicationController
       indeed_service = IndeedService.new(Rails.application.secrets.indeed_api, request.env)
       indeed_service.execute(@search.job1, @search.job2, @search.job_scale, @search.location)
       @indeed = @search.create_indeed_result(indeed_service.response)
-      #@response = indeed_service.response['job_raw_1']['results']
-      #render :text => @response
+
+      # Meetup
+      meetup_service = MeetupService.new(@search.meetup_interests, @search.location)
+      meetup_service.execute
+      #@search # Create many results
+
+      render :text => meetup_service.response
 
       flash[:success] = 'New search created!'
-      redirect_to searches_path
+      #redirect_to searches_path
     else
       flash[:error] = 'Search had a problem saving to the database'
       render 'new'
@@ -84,6 +89,6 @@ class SearchesController < ApplicationController
     end
 
     def search_params
-      params.require(:search).permit(:job1, :job2, :location, :job_scale, :user_id)
+      params.require(:search).permit(:job1, :job2, :location, :job_scale, :user_id, :meetup_interests)
     end
 end

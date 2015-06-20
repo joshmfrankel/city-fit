@@ -15,5 +15,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'input[name=?]', 'search[job2]'
     assert_select 'input[name=?]', 'search[job_scale]'
     assert_select 'input[name=?]', 'search[location]'
+    assert_select 'input[name=?]', 'search[meetup_interest]'
   end
 end

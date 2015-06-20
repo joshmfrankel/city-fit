@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+first_meetup:
+  score: 1.5
+  name: MyText
+  total_members: 1
+  total_groups: 1
+  search: one

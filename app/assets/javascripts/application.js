@@ -11,7 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+    $('.new_search').on('click', '#enable_meetup', function () {
+        $('.meetup-section').slideToggle();
+    });
+});
