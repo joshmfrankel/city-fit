@@ -48,8 +48,11 @@ class MeetupApiReturnsResultsTest < ActionDispatch::IntegrationTest
 
   test 'should return valid response array' do
     request
-    response =  @meetup_interests.execute
-    puts response['Camping']
+    response = @meetup_interests.execute
+    assert(response["Camping"][0]["score"], 'Not true')
+    assert(response["Camping"][0]["total_members"], 'Not true')
+    assert(response["Camping"][0]["total_meetups"], 'Not true')
+    assert(response["Camping"][0]["avg_relevancy"], 'Not true')
   end
 
   # test 'should have a valid response' do

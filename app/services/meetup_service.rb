@@ -14,10 +14,9 @@ class MeetupService
 
     require 'json'
 
-    response = Hash.new
+    response = []
 
     @meetup_interests.each do |interest|
-      response[interest] = Hash.new
 
       request = HTTParty.get("#{@@url}?sign=true&key=#{Rails.application.secrets.meetup_api}&photo-host=public&location=#{@location}&text=#{interest}&radius=25")
 
@@ -28,14 +27,14 @@ class MeetupService
       end
 
       # Format the results from the api
-      response[interest] = format_result(json)
+      response.push(format_result(json, interest))
 
     end
 
-    response
+    @response = response
   end
 
-  def format_result(data)
+  def format_result(data, name)
     total_members   = 0
     total_meetups   = 0
     total_relevancy = 0
@@ -50,6 +49,7 @@ class MeetupService
     avg_relevancy = total_relevancy / total_meetups
 
     [
+      'name'          => name,
       'total_members' => total_members,
       'total_meetups' => total_meetups,
       'avg_relevancy' => avg_relevancy,

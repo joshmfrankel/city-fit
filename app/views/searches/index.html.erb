@@ -13,12 +13,12 @@
         </tr>
 
             <% @search.each do |item| %>
+            <%= item.indeed_result.inspect %>
                 <tr>
                     <td><%= check_box_tag 'compare[]', item.id, false, id: "compare_#{item.id}" %></td>
                     <td><%= item.job1 %></td>
                     <td><%= item.job2 %></td>
                     <td><%= item.location %></td>
-                    <td><%= item.indeed_result.score %></td>
                     <td><%= link_to 'Edit', edit_search_path(item) %></td>
                     <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
