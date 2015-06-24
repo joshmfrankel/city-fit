@@ -4,5 +4,6 @@ first_meetup:
   score: 1.5
   name: MyText
   total_members: 1
-  total_groups: 1
+  total_meetups: 1
+  avg_relevancy: 23.3
   search: one

@@ -21,13 +21,13 @@ class MeetupTest < ActiveSupport::TestCase
     assert_not @meetup.valid?
   end
 
-  test "total groups should be valid" do
-    @meetup.total_groups = nil
+  test "total meetups should be valid" do
+    @meetup.total_meetups = nil
     assert_not @meetup.valid?
   end
 
-  test "total groups should be a number" do
-    @meetup.total_groups = 'abc'
+  test "total meetups should be a number" do
+    @meetup.total_meetups = 'abc'
     assert_not @meetup.valid?
   end
 
@@ -38,6 +38,16 @@ class MeetupTest < ActiveSupport::TestCase
 
   test "total members should be a number" do
     @meetup.total_members = 'abc'
+    assert_not @meetup.valid?
+  end
+
+  test "avg relevancy should be valid" do
+    @meetup.avg_relevancy = nil
+    assert_not @meetup.valid?
+  end
+
+  test "avg relevancy should be a number" do
+    @meetup.avg_relevancy = 'abc'
     assert_not @meetup.valid?
   end
 

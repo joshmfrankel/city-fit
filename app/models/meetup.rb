@@ -5,4 +5,5 @@ class Meetup < ActiveRecord::Base
   validates :name, presence: true
   validates :total_members, presence: true, numericality: { only_integer: true }
   validates :total_meetups, presence: true, numericality: { only_integer: true }
+  validates :avg_relevancy, presence: true, numericality: { only_integer: true }
 end
