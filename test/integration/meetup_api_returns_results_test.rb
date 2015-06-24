@@ -48,13 +48,8 @@ class MeetupApiReturnsResultsTest < ActionDispatch::IntegrationTest
 
   test 'should return valid response array' do
     request
-    response =  @meetup_interests.execute
-    puts response['Camping']
+    response = @meetup_interests.execute
+    #assert_equal(response[0][0]['name'], 'Camping')
   end
 
-  # test 'should have a valid response' do
-  #   request
-
-  #   assert_not @meetup_interests.execute.nil?
-  # end
 end

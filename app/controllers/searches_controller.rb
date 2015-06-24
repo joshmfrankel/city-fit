@@ -26,12 +26,10 @@ class SearchesController < ApplicationController
       # Meetup
       meetup_service = MeetupService.new(@search.meetup_interests, @search.location)
       meetup_service.execute
-      #@search # Create many results
-
-      render :text => meetup_service.response
+      @search.meetup.create(meetup_service.response) # save to has_many (batch insert)
 
       flash[:success] = 'New search created!'
-      #redirect_to searches_path
+      redirect_to searches_path
     else
       flash[:error] = 'Search had a problem saving to the database'
       render 'new'

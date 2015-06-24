@@ -7,7 +7,8 @@
             <th>Job1</th>
             <th>Job2</th>
             <th>Location</th>
-            <th>Score</th>
+            <th>Indeed Score</th>
+            <th>Meetup Score</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -18,7 +19,10 @@
                     <td><%= item.job1 %></td>
                     <td><%= item.job2 %></td>
                     <td><%= item.location %></td>
-                    <td><%= item.indeed_result.score %></td>
+                    <td><%= item.indeed_result.score if defined?(item.indeed_result.score) %></td>
+                    <td><% item.meetup.each do |meetup| %>
+                        <%= "#{meetup.name}: #{meetup.score}" %>
+                    <% end %></td>
                     <td><%= link_to 'Edit', edit_search_path(item) %></td>
                     <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
